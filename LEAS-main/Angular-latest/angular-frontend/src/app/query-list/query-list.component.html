@@ -1,0 +1,40 @@
+
+<div [hidden]="!authenticated()" class="container">
+    <h1>Queries:</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Masks</th>
+                <th>Scheduled At</th>
+                <th>On Index</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr *ngFor = "let q of queries"> <!--queries is array from querylistcomponent-->
+                <td>{{q.product}}</td>
+                <td>{{q.queryName}}</td>
+                <td>{{q.description}}</td>
+                <td>{{q.maskList[0]}}</td>
+                <td>{{q.scheduleName}}</td>
+                <td>{{q.elasticSearchIndex}}</td>
+                <td class="button-container">
+                        <button class="btn btn-primary" (click)="updateQuery(q.queryName)">Edit</button>
+                        <button class="btn btn-primary" (click)="runQueryOnce(q.queryName)" style="margin-left:10px;">Execute Sample</button>
+                        <button class="btn btn-danger" (click)="deleteQuery(q.queryName)" style="margin-left:10px;">Delete</button>
+                </td>
+            </tr>
+                        
+        </tbody>
+    </table>
+    <p *ngIf = "!scheduleCount || scheduleCount===0">Create a schedule before creating a query</p>
+    <button *ngIf ="scheduleCount && scheduleCount>0" class="btn btn-primary" (click)="gotoCreateQuery()">Create New Query</button> <!--path configured in routes-->
+</div>
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+ </div>

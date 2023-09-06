@@ -1,0 +1,87 @@
+<div [hidden]= "!authenticated()" class="container">
+    <h1>Update Schedule {{s.name}}</h1>
+        
+                <form (ngsubmit)="onSubmit()"> <!--onsubmit is eventhandler defined in component-->
+                    <div class="form-group">
+                        <label for="cron">Cron:</label>
+                        <input type="text" class="form-control" id="cron" [(ngModel)]="s.cron" name="cron">
+                    </div>
+                    <div class="row">
+                        <label for="Date">Pick Date:</label>
+                        <div class="col-xs-12 col-12 col-md-4 form-group">
+                            <input
+                            placeholder="Datepicker"
+                            class="form-control"
+                            #dp="bsDatepicker"
+                            [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" 
+                            bsDatepicker [ngModel]="bsValue"
+                            (ngModelChange)="switchForDay($event)"
+                            [(ngModel)]="bsValue" 
+                            name="date">                       
+                         </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <label for="Time">Pick Time:</label>
+                        <timepicker [(ngModel)]="time" [showSeconds]="true" name="time"
+                        (ngModelChange)="switchForTime($event)"
+                        ></timepicker>  
+                    </div>
+                   
+                </form>
+                <div class="row">
+                    <mat-slide-toggle [(ngModel)]="isEveryMinute"
+                    (change)="switchForEveryMinute()"
+                    >Schedule every minute
+                    </mat-slide-toggle>
+                </div>
+                <div class="row">
+                    <mat-slide-toggle [(ngModel)]="isEveryHour"
+                    (change)="switchForEveryHour()"
+                    >Schedule every hour
+                    </mat-slide-toggle>
+                </div>
+                <div class="row">
+                    <mat-slide-toggle [(ngModel)]="isEveryDayofWeek"
+                    (change)="switchForEveryWeek()"
+                    >Schedule every day of the week
+                    </mat-slide-toggle>
+                </div>
+                <div class="row">
+                    <mat-slide-toggle [(ngModel)]="isEveryMonth"
+                    (change)="switchForEveryMonth()"
+                    >Schedule every month
+                    </mat-slide-toggle>
+                </div>
+                <div class="row" class="cron table">
+                    <table>
+                        <caption>New Cron: {{cron}}</caption>
+                        <tr>
+                            <th>Seconds</th>
+                            <th>Minute</th>
+                            <th>Hour (24 hr format)</th>
+                            <th>Date</th>
+                            <th>Month</th>
+                            <th>Day</th>
+                        </tr>
+                        <tr>
+                            <td>{{seconds}}</td>
+                            <td>{{minutes}}</td>
+                            <td>{{hours}}</td>
+                            <td>{{date}}</td>
+                            <td>{{month}}</td>
+                            <td>{{dayOfWeek}}</td>
+                        </tr>
+                    </table>
+                    
+                </div>
+                <div>
+                    <mat-slide-toggle [disabled]=" isEmptyQueryList===false" [(ngModel)]="isScheduleEnabled" checked="isScheduleEnabled===true">Enable Schedule</mat-slide-toggle>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="onSubmit()">Update</button>
+                </div>
+</div>
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+</div>

@@ -1,0 +1,12 @@
+mat-slide-toggle {
+    margin: 8px 0;
+    display: block;
+  }
+  
+table, th, td {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.container{
+  width: 75%;
+}

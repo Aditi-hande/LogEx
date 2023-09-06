@@ -1,0 +1,33 @@
+<div [hidden]="!authenticated()" class="container">
+    
+    <h1>Update mask</h1>
+
+    <form (ngsubmit)="onSubmit()"> <!--onsubmit is eventhandler defined in component-->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="maskName"[(ngModel)]="m.maskName">
+        </div>
+
+        <div class="form-group">
+            <label for="query">Regex text:</label>
+            <textarea class="form-control" id="query" name="regex" [(ngModel)]="m.regex"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="replaceWith">Replace with string:</label>
+            <input type="text" class="form-control" id="replaceWith" name="replaceString" [(ngModel)]="m.replaceString">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" id="description" name="description" [(ngModel)]="m.description">
+        </div>
+    </form>
+    
+    <button class="btn btn-primary" (click)="onSubmit()">Update</button>
+    <button class="btn btn-primary" (click)="onCancel()" style="margin-left: 10px;">Cancel</button>
+
+</div>
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+</div>

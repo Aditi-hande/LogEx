@@ -1,0 +1,31 @@
+.clicktext{
+    color: #0000FF;
+    text-decoration: none;
+}
+.container{
+    margin-top: 10%;
+    width: 75%;
+}
+.myTable{
+    margin-left: 25%;
+    width: 50%;
+    border: solid 1px #c0ffff;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size:x-large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.myTable thead td{
+    background-color: #ffffff;
+    border: solid 1px #c0ffff;
+    color: #a8e3ff;
+    padding: 10px;
+    text-align: left;
+    font-size: xx-large;
+}
+.myTable tbody td{
+    border: solid 1px #c0ffff;
+    color: #333;
+    padding: 10px;
+    text-align: justify;
+}

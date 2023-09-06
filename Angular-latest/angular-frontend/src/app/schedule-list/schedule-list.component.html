@@ -1,0 +1,34 @@
+<div [hidden]="!authenticated()" class="container">
+    <h1>Schedules:</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last Updated</th>
+                <th>Author</th>
+                <th>Queries</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr *ngFor = "let s of schedules"> 
+                <td>{{s.name}}</td>
+                <td>23 Jan 2021</td>
+                <td>Siddharth B</td>
+                <td *ngIf = "!s.queryList || s.queryList.length === 0">0</td>
+                <td *ngIf = "s.queryList!==null && s.queryList.length > 0" (click) = "gotoQueryList()">{{s.queryList.length}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="updateSchedule(s.name)">Edit</button>
+                    <button class="btn btn-danger" [disabled]="s.queryList!==null && s.queryList.length > 0" (click)="deleteSchedule(s.name)" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+                        
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="gotoCreateSchedule()">Create New Schedule</button> <!--path configured in routes-->
+</div>
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+</div>

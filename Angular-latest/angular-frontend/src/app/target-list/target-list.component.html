@@ -1,0 +1,38 @@
+
+
+<div [hidden]="!authenticated()" class="container">
+    
+
+    <h1>Targets:</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Last Updated</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                
+            <tr *ngFor = "let t of targets"> <!--targets is array from targetlistcomponent-->
+                <td>{{t.type}}</td>
+                <td>{{t.targetName}}</td>
+                <td>{{t.description}}</td>
+                <td>11 Jan 2021</td>
+                <td>Siddharth B</td>
+                <td>
+                    <button class="btn btn-primary" (click)="updateTarget(t.targetName)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteTarget(t.targetName)" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>            
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="gotoCreateTarget()">Create new target</button>
+</div>
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+</div>

@@ -1,0 +1,26 @@
+<div [hidden]="!authenticated()" class="container">
+<table class="myTable">
+    <tbody>
+        <tr>
+            <td>Queries</td>
+            <td><a  class="clicktext" (click)="gotoQueryList()">{{queryCount}}</a></td>
+        </tr>
+        <tr>
+            <td>Targets</td>
+            <td><a  class="clicktext" (click)="gotoTargetList()">{{targetCount}}</a></td>
+        </tr>
+        <tr>
+            <td>Masks</td>
+            <td><a class="clicktext" (click)="gotoMaskList()">{{maskCount}}</a></td>
+        </tr>
+        <tr>
+            <td>Schedules</td>
+            <td><a class="clicktext" (click)="gotoScheduleList()">{{scheduleCount}}</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+ </div>

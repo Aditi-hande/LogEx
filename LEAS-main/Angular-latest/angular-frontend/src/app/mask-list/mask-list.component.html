@@ -1,0 +1,33 @@
+
+<div [hidden]="!authenticated()" class="container">
+
+    <h1>Masks:</h1>
+
+    <table class="table">
+        <thead>
+            <tr>                        
+                <th>Name</th>
+                <th>Description</th>
+                <th>Last Updated</th>
+                <th>Author</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let m of masks"> <!--masks is array from masklistcomponent-->
+                <td>{{m.maskName}}</td>
+                <td>{{m.description}}</td>
+                <td>11  Jan 2021</td>
+                <td>Bhaskar K</td>
+                <td>
+                    <button class="btn btn-primary" (click)="updateMask(m.maskName)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteMask(m.maskName)" style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="gotoCreateMask()">Create New Mask</button> <!--path configured in routes-->
+</div>
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+ </div>

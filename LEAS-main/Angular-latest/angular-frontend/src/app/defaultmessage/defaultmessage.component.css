@@ -1,0 +1,18 @@
+.container{
+    margin-top: 20%;
+    margin-bottom: 20%;
+    height: 50%;
+    width: 75%;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    box-shadow: 10px 10px 10px 0px rgb(199, 199, 255);
+}
+
+.loginMessage{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: large;
+    font-style: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: navy;
+}

@@ -1,0 +1,75 @@
+<div [hidden]="!authenticated()" class="container">
+    <h1>New Schedule</h1>
+    
+    <form (ngsubmit)="onSubmit()">
+        
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="s.name">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Cron:</label>
+            <input type="text" class="form-control" id="description" name="description"[(ngModel)]="s.cron">
+        </div>
+
+
+        <div class="row">
+            <label for="Date">Pick Date:</label>
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+                <input
+                placeholder="Datepicker"
+                class="form-control"
+                #dp="bsDatepicker"
+                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" 
+                bsDatepicker [ngModel]="bsValue"
+                [(ngModel)]="bsValue" name="date">                       
+             </div>
+        </div>
+        <hr>
+        <div class="row">
+            <label for="Time">Pick Time:</label>
+            <timepicker [(ngModel)]="time" name="time"></timepicker>  
+        </div>
+
+    </form>
+    <div class="row">
+        <mat-slide-toggle [(ngModel)]="isEveryDayofWeek"
+        (change)="switchForEveryWeek()"
+        >Schedule every day of the week
+        </mat-slide-toggle>
+    </div>
+    <div class="row">
+        <mat-slide-toggle [(ngModel)]="isEveryMonth"
+        (change)="switchForEveryMonth()"
+        >Schedule every month
+        </mat-slide-toggle>
+    </div>
+    <div class="row" class="cron table">
+        <table>
+            <caption>New Cron: {{cron}}</caption>
+            <tr>
+                <th>Seconds</th>
+                <th>Minute</th>
+                <th>Hour (24 hr format)</th>
+                <th>Date</th>
+                <th>Month</th>
+                <th>Day</th>
+            </tr>
+            <tr>
+                <td>{{seconds}}</td>
+                <td>{{minutes}}</td>
+                <td>{{hours}}</td>
+                <td>{{date}}</td>
+                <td>{{month}}</td>
+                <td>{{dayOfWeek}}</td>
+            </tr>
+        </table>
+        
+    </div>
+    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+</div>
+
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+ </div>

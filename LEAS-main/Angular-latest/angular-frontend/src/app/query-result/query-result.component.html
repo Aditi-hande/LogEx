@@ -1,0 +1,30 @@
+
+<div [hidden]="!authenticated()" class="container">
+    <h1>Result:</h1>
+
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Level</th>
+            <th>Detail</th>
+            <th>Year-month-day-time</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr *ngFor = "let q of queryResult"> <!--queries is array from querylistcomponent-->
+            <td>{{q.type}}</td>
+            <td>{{q.LEVEL}}</td> <!--here casing is done according to logline.java-->
+            <td>{{q.detail}}</td>
+            <td>{{q.year}}-{{q.month}}-{{q.day}}-{{q.time}}</td>
+        </tr>
+        <button class="btn btn-primary" (click)="gotoQueryList()">Queries</button>
+
+    </tbody>
+    </table>
+</div>
+<div [hidden]="authenticated()" class="container">
+    <app-defaultmessage></app-defaultmessage>
+</div>
